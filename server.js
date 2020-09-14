@@ -2,9 +2,6 @@ const inquirer = require("inquirer");
 const mysql = require("mysql");
 const cTable = require("console.table");
 
-// Express app
-var app = express();
-
 // PORT
 var PORT = process.env.PORT || 8080;
 
@@ -19,7 +16,7 @@ var connection = mysql.createConnection( {
 
 // Initiate MySQL connection
 connection.connect((err) => {
-    if(err {
+    if (err) {
         console.error("error connecting: " + err.stack);
         return;
     }
@@ -32,7 +29,6 @@ const responseValidation = function (input) {
         console.log("This parameter cannot be empty!");
         return false;
     }
-
     return true;
 };
 
@@ -58,7 +54,13 @@ function start() {
 
 // Function to view all employees stored in database
 function viewAll() {
-
+    var query = "SELECT * FROM employee ORDER BY id";
+    connection.query(query, (err, res) => {
+        if (err) throw err;
+        const table = cTable.getTable(res);
+        console.log(table);
+        start();
+    })
 };
 
 // function viewAllByDepart() { };
@@ -94,7 +96,6 @@ function addEmployee() {
         }
     ]).then(answers => {
 
-        start();
     });
 };
 
@@ -122,8 +123,6 @@ function updateEmployeeRole() {
             choices: []
         }
     ]).then(answers => {
-
-        start();
     });
 };
 
@@ -143,13 +142,17 @@ function updateEmployeeManager() {
             choices: []
         }
     ]).then(answers => {
-
         start();
     });
 };
 
+start();
 // function viewAllRoles() { };
 
 // function addRole() { };
 
 // function removeRole() { };
+
+// app.listen(PORT, () => {
+//     console.log("Server listening on: http://localhost:" + PORT);
+// });
