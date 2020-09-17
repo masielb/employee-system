@@ -29,7 +29,8 @@ To activate the application, will need to code:
 * Node JS
 
 ## Application Demo
-![application demo](fullvideo.gif)
+![application view action](view.png)
+![application add and update action](add_n_update.png)
 
 ## Contact Information
 * Masiel Bautista
