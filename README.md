@@ -20,7 +20,7 @@ This application will also require users to utilize the code in the ```schema.sq
 
 To activate the application, will need to code:
 
-<code>node server.js<code>
+<code>node server.js</code>
 
 ## Technologies Used
 * Inquirer
